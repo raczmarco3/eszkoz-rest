@@ -77,12 +77,30 @@ class TulajdonosController extends AbstractController
         $tulajdonosService = new TulajdonosService();
         $state = $tulajdonosService->deleteById($registry, $id);
 
-        if($state == 0) {
+        if($state === 0) {
             return new Response('Nincs ilyen tulajdonos!', 404);
-        } else if($state == 2) {
+        } else if($state === 2) {
             return new Response('A tulajdonos rendelkezik eszközzel/eszközökkel, előbb a hozzá tartozó eszközöket kell törölni!', 403);
         }
 
         return new Response('A törlés sikeres!', 200);
+    }
+
+    /**
+     * @Route("/api/tulajdonos/{id}/eszkozok", methods={"GET"})
+     */
+    public function getAllTulajdonosEszkoz(Request $request, ManagerRegistry $registry, SerializerInterface $serializer, $id): Response
+    {
+        $tulajdonosService = new TulajdonosService();
+        $eszkozok = $tulajdonosService->listAllTulajdonosEszkoz($registry, $id);
+
+        if($eszkozok === 0) {
+            return new Response('Tulajdonos nem található!', 404);
+        } else if($eszkozok === 1) {
+            return new Response('Tulajdonosnak egyetlen eszköze sincs!', 404);
+        }
+
+        $response = JsonConverter::jsonResponse($serializer, $eszkozok, 'tulajEszkozok');
+        return $response;
     }
 }

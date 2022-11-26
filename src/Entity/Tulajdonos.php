@@ -20,6 +20,7 @@ class Tulajdonos
      * @ORM\Column(type="integer")
      * @Groups({"eszkozok"})
      * @Groups({"eszkoz"})
+     * @Groups({"tulajEszkozok"})
      */
     private $id;
 
@@ -27,6 +28,7 @@ class Tulajdonos
      * @ORM\Column(type="string", length=255)
      * @Groups({"eszkozok"})
      * @Groups({"eszkoz"})
+     * @Groups({"tulajEszkozok"})
      */
     private $nev;
 
@@ -34,6 +36,7 @@ class Tulajdonos
      * @ORM\Column(type="string", length=255)
      * @Groups({"eszkozok"})
      * @Groups({"eszkoz"})
+     * @Groups({"tulajEszkozok"})
      */
     private $szemelyi;
 
@@ -41,6 +44,7 @@ class Tulajdonos
      * @ORM\Column(type="date")
      * @Groups({"eszkozok"})
      * @Groups({"eszkoz"})
+     * @Groups({"tulajEszkozok"})
      */
     private $szuldatum;
 

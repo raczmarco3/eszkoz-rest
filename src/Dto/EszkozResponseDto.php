@@ -7,31 +7,37 @@ Class EszkozResponseDto
 {
     /**
      * @Groups({"eszkozok"})
+     * @Groups({"tulajEszkozok"})
      */
     private $id;
 
     /**
      * @Groups({"eszkozok"})
+     * @Groups({"tulajEszkozok"})
      */
     private $marka;
 
     /**
      * @Groups({"eszkozok"})
+     * @Groups({"tulajEszkozok"})
      */
     private $tipus;
 
     /**
      * @Groups({"eszkozok"})
+     * @Groups({"tulajEszkozok"})
      */
     private $leiras;
 
     /**
      * @Groups({"eszkozok"})
+     * @Groups({"tulajEszkozok"})
      */
     private $jelleg;
 
     /**
      * @Groups({"eszkozok"})
+     * @Groups({"tulajEszkozok"})
      */
     private $tulajdonos;
 

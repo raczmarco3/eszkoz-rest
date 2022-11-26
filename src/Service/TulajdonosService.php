@@ -7,6 +7,7 @@ use App\Dto\TulajdonosRequestDto;
 use App\Dto\TulajdonosResponseDto;
 use App\Entity\Tulajdonos;
 use App\Repository\EszkozRepository;
+use App\Dto\EszkozResponseDto;
 
 Class TulajdonosService
 {
@@ -71,5 +72,34 @@ Class TulajdonosService
 
         $tulajdonosRepository->remove($tulajdonos, true);
         return 1;
+    }
+
+    public function listAllTulajdonosEszkoz($registry, $id)
+    {
+        $tulajdonosRepository = new TulajdonosRepository($registry);        
+        $tulajdonos = $tulajdonosRepository->find($id);
+
+        if(!$tulajdonos) {
+            return 0;
+        }
+
+        $eszkozRepository = new EszkozRepository($registry);
+        $eszkozok_ = $eszkozRepository->findBy(['tulajdonos' => $tulajdonos]);        
+
+        if(!$eszkozok_) {
+            return 1;
+        }
+
+        $eszkozok = array();
+
+        foreach($eszkozok_ as $eszkoz)
+        {
+            $eszkozResponseDto = new EszkozResponseDto($eszkoz->getId(), $eszkoz->getMarka(), $eszkoz->getTipus(),
+             $eszkoz->getLeiras(), $eszkoz->getJelleg(), $eszkoz->getTulajdonos());
+            
+            array_push($eszkozok, $eszkozResponseDto);
+        }
+
+        return $eszkozok;
     }
 }
