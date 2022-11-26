@@ -6,38 +6,32 @@ use Symfony\Component\Serializer\Annotation\Groups;
 Class EszkozResponseDto
 {
     /**
-     * @Groups({"eszkozok"})
-     * @Groups({"tulajEszkozok"})
+     * @Groups({"eszkoz"})
      */
     private $id;
 
     /**
-     * @Groups({"eszkozok"})
-     * @Groups({"tulajEszkozok"})
+     * @Groups({"eszkoz"})
      */
     private $marka;
 
     /**
-     * @Groups({"eszkozok"})
-     * @Groups({"tulajEszkozok"})
+     * @Groups({"eszkoz"})
      */
     private $tipus;
 
     /**
-     * @Groups({"eszkozok"})
-     * @Groups({"tulajEszkozok"})
+     * @Groups({"eszkoz"})
      */
     private $leiras;
 
     /**
-     * @Groups({"eszkozok"})
-     * @Groups({"tulajEszkozok"})
+     * @Groups({"eszkoz"})
      */
     private $jelleg;
 
     /**
-     * @Groups({"eszkozok"})
-     * @Groups({"tulajEszkozok"})
+     * @Groups({"eszkoz"})
      */
     private $tulajdonos;
 

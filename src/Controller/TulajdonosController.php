@@ -100,7 +100,7 @@ class TulajdonosController extends AbstractController
             return new Response('Tulajdonosnak egyetlen eszköze sincs!', 404);
         }
 
-        $response = JsonConverter::jsonResponse($serializer, $eszkozok, 'tulajEszkozok');
+        $response = JsonConverter::jsonResponse($serializer, $eszkozok, 'eszkoz');
         return $response;
     }
 }

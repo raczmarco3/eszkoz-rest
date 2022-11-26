@@ -2,11 +2,28 @@
 
 namespace App\Dto;
 
+use Symfony\Component\Serializer\Annotation\Groups;
+
 Class TulajdonosResponseDto
 {
+    /**
+     * @Groups({"eszkoz"})
+     */
     private $id;
+
+    /**
+     * @Groups({"eszkoz"})
+     */
     private $nev;
+
+    /**
+     * @Groups({"eszkoz"})
+     */
     private $szemelyi;
+
+    /**
+     * @Groups({"eszkoz"})
+     */
     private $szuldatum;
 
     public function __construct($id, $nev, $szemelyi, $szuldatum)

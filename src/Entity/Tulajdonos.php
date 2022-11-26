@@ -18,33 +18,25 @@ class Tulajdonos
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"eszkozok"})
      * @Groups({"eszkoz"})
-     * @Groups({"tulajEszkozok"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"eszkozok"})
      * @Groups({"eszkoz"})
-     * @Groups({"tulajEszkozok"})
      */
     private $nev;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"eszkozok"})
      * @Groups({"eszkoz"})
-     * @Groups({"tulajEszkozok"})
      */
     private $szemelyi;
 
     /**
      * @ORM\Column(type="date")
-     * @Groups({"eszkozok"})
      * @Groups({"eszkoz"})
-     * @Groups({"tulajEszkozok"})
      */
     private $szuldatum;
 

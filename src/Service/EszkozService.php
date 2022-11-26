@@ -64,7 +64,7 @@ Class EszkozService
         $eszkozResponseDto = new EszkozResponseDto($eszkoz->getId(), $eszkoz->getMarka(), $eszkoz->getTipus(),
          $eszkoz->getLeiras(), $eszkoz->getJelleg(), $eszkoz->getTulajdonos());
         
-        return $eszkoz;
+        return $eszkozResponseDto;
     }
 
     public function deleteById($registry, $id)

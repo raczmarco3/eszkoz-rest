@@ -5,8 +5,6 @@ namespace App\Entity;
 use App\Repository\EszkozRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-use Symfony\Component\Serializer\Annotation\Groups;
-
 /**
  * @ORM\Entity(repositoryClass=EszkozRepository::class)
  */
@@ -16,38 +14,32 @@ class Eszkoz
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"eszkoz"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"eszkoz"})
      */
     private $marka;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"eszkoz"})
      */
     private $tipus;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"eszkoz"})
      */
     private $leiras;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"eszkoz"})
      */
     private $jelleg;
 
     /**
      * @ORM\ManyToOne(targetEntity=Tulajdonos::class, inversedBy="eszkozok")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"eszkoz"})
      */
     private $tulajdonos;
 

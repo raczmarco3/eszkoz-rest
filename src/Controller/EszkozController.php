@@ -49,7 +49,7 @@ class EszkozController extends AbstractController
         if(!$eszkozok) {
             return new Response('Nem található egyetlen eszköz sem!', 404);
         }
-        $response = JsonConverter::jsonResponse($serializer, $eszkozok, 'eszkozok');
+        $response = JsonConverter::jsonResponse($serializer, $eszkozok, 'eszkoz');
         return $response;
     }
 
