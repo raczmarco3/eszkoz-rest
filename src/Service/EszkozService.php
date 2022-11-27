@@ -7,6 +7,7 @@ use App\Dto\EszkozRequestDto;
 use App\Dto\EszkozResponseDto;
 use App\Repository\EszkozRepository;
 use App\Repository\TulajdonosRepository;
+use App\Dto\TulajdonosResponseDto;
 
 Class EszkozService
 {
@@ -44,8 +45,11 @@ Class EszkozService
 
         foreach($eszkozok as $eszkoz)
         {
+            $tulajdonosResponseDto = new TulajdonosResponseDto($eszkoz->getTulajdonos()->getId(), $eszkoz->getTulajdonos()->getNev(),
+             $eszkoz->getTulajdonos()->getSzemelyi(), $eszkoz->getTulajdonos()->getSzuldatum());
+
             $eszkozResponseDto = new EszkozResponseDto($eszkoz->getId(), $eszkoz->getMarka(), $eszkoz->getTipus(),
-             $eszkoz->getLeiras(), $eszkoz->getJelleg(), $eszkoz->getTulajdonos());
+             $eszkoz->getLeiras(), $eszkoz->getJelleg(), $tulajdonosResponseDto);
 
             array_push($eszkozResponseDtoArray, $eszkozResponseDto);
         }
@@ -60,9 +64,12 @@ Class EszkozService
         if(!$eszkoz) {
             return false;
         }
+
+        $tulajdonosResponseDto = new TulajdonosResponseDto($eszkoz->getTulajdonos()->getId(), $eszkoz->getTulajdonos()->getNev(),
+             $eszkoz->getTulajdonos()->getSzemelyi(), $eszkoz->getTulajdonos()->getSzuldatum());
         
         $eszkozResponseDto = new EszkozResponseDto($eszkoz->getId(), $eszkoz->getMarka(), $eszkoz->getTipus(),
-         $eszkoz->getLeiras(), $eszkoz->getJelleg(), $eszkoz->getTulajdonos());
+         $eszkoz->getLeiras(), $eszkoz->getJelleg(), $tulajdonosResponseDto);
         
         return $eszkozResponseDto;
     }

@@ -94,8 +94,11 @@ Class TulajdonosService
 
         foreach($eszkozok_ as $eszkoz)
         {
+            $tulajdonosResponseDto = new TulajdonosResponseDto($eszkoz->getTulajdonos()->getId(), $eszkoz->getTulajdonos()->getNev(),
+             $eszkoz->getTulajdonos()->getSzemelyi(), $eszkoz->getTulajdonos()->getSzuldatum());
+
             $eszkozResponseDto = new EszkozResponseDto($eszkoz->getId(), $eszkoz->getMarka(), $eszkoz->getTipus(),
-             $eszkoz->getLeiras(), $eszkoz->getJelleg(), $eszkoz->getTulajdonos());
+             $eszkoz->getLeiras(), $eszkoz->getJelleg(), $tulajdonosResponseDto);
             
             array_push($eszkozok, $eszkozResponseDto);
         }

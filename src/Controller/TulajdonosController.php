@@ -47,8 +47,7 @@ class TulajdonosController extends AbstractController
             return new Response('Nem található egyetlen tulajdonos sem!', 404);
         }
 
-        $response = JsonConverter::jsonResponse($serializer, $tulajdonosok);
-        
+        $response = JsonConverter::jsonResponse($serializer, $tulajdonosok);        
         return $response;
     }
 
@@ -65,7 +64,6 @@ class TulajdonosController extends AbstractController
         }
 
         $response = JsonConverter::jsonResponse($serializer, $tulajdonos);
-
         return $response;
     }
     
