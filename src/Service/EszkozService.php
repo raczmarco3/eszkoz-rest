@@ -86,4 +86,34 @@ Class EszkozService
         $eszkozRepository->remove($eszkoz, true);
         return true;
     }
+
+    public function updateEszkoz($registry, $eszkozReqeustDto, $id, $szerkId)
+    {
+        if($id != $szerkId) {
+            return 0;
+        }
+
+        $entityManager = $registry->getManager();   
+        $eszkoz = $entityManager->getRepository(Eszkoz::class)->find($id);  
+        
+        if(!$eszkoz) {
+            return 2;
+        }
+
+        $tulajdonosRepository = new TulajdonosRepository($registry);
+        $tulajdonos = $tulajdonosRepository->find($eszkozReqeustDto->getTulajdonosId());
+
+        if(!$tulajdonos) {
+            return 3;
+        }
+
+        $eszkoz->setMarka($eszkozReqeustDto->getMarka());
+        $eszkoz->setTipus($eszkozReqeustDto->getTipus());
+        $eszkoz->setLeiras($eszkozReqeustDto->getLeiras());
+        $eszkoz->setJelleg($eszkozReqeustDto->getJelleg());
+        $eszkoz->setTulajdonos($tulajdonos);
+
+        $entityManager->flush();
+        return 1;
+    }
 }

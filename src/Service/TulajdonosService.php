@@ -105,4 +105,25 @@ Class TulajdonosService
 
         return $eszkozok;
     }
+
+    public function updateTulajdonos($registry, $id, $tulajdonosRequestDto, $szerkId)
+    {
+        if($id != $szerkId) {
+            return 0;
+        }
+
+        $entityManager = $registry->getManager();
+        $tulajdonos = $entityManager->getRepository(Tulajdonos::class)->find($id);
+
+        if(!$tulajdonos) {
+            return 2;
+        }
+
+        $tulajdonos->setNev($tulajdonosRequestDto->getNev());
+        $tulajdonos->setSzemelyi($tulajdonosRequestDto->getSzemelyi());
+        $tulajdonos->setSzuldatum($tulajdonosRequestDto->getSzuldatum());
+
+        $entityManager->flush();
+        return 1;
+    }
 }
